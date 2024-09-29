@@ -1,0 +1,34 @@
+Questions:
+-	What happens if users choose “Cancel”?
+	Khi bấm Cancel thì hiển thị You've chosen: No
+
+-	How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t” (Suggestion: Use Javadocs or using Eclipse/Netbean IDE help). 
+	Dùng đoạn code sau thay thế, muốn đổi thì chỉ cần thay Yes No trong " " thành I do và I don't hay bất 	cứ gì cũng được:
+
+	import javax.swing.JOptionPane;
+
+public class ChoosingOption {
+    public static void main(String[] args) {
+        // Define custom button labels
+        Object[] options = {"Yes", "No"};
+
+        // Show option dialog with only "Yes" and "No"
+        int option = JOptionPane.showOptionDialog(
+            null,
+            "Do you want to change to the first class ticket?", // Message
+            "Dialog With 2 Options", // Dialog title
+            JOptionPane.YES_NO_OPTION, // Limit to Yes/No buttons only
+            JOptionPane.QUESTION_MESSAGE, // Type of message (Question icon)
+            null, // No custom icon
+            options, // Custom button labels
+            options[0] // Default button (Yes)
+        );
+
+        // Handle the response
+        if (option == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "You selected: Yes");
+        } else if (option == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "You selected: No");
+        }
+    }
+}
